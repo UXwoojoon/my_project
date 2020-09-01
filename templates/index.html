@@ -7,45 +7,379 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Nuevapaper</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <style>
+            #date {
+                position: absolute;
+                display: flex;
+                justify-content: left;
+                vertical-align: bottom;
+                text-align: left;
+                font-family: 나눔스퀘어;
+                font-size: 14px;
+            }
+
             .header {
+                text-align: center;
                 font-family: "CookieRunOTF";
+                color: #606060;
+                font-weight: bold;
+                font-size: 25px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+            }
+
+            #news {
+                background: lightgray;
+                width: 645px;
+                height: 610px;
+            }
+
+            #hlimgFrame {
+                position: relative;
+                width: 645px;
+                height: 375px;
+            }
+
+            #headlineImg {
+                background-position: center;
+                background-size: cover;
+            }
+
+            #headlineTitle {
+                position: absolute;
+                background-blend-mode: multiply;
+                background-image: linear-gradient(rgba(0, 0, 0, 0) 275px, rgba(0, 0, 0, 40) 375px);
+                background-repeat: no-repeat;
+                font-weight: bold;
+                font-size: 18px;
+                color: white;
+            }
+
+            #hdlist {
+                list-style: none;
+                text-align: center;
+                padding: 0px;
+            }
+
+            .arli {
+                padding: 5px;
+                height: 25px;
+                font-size: 14px;
                 font-weight: bold;
             }
-            .col-xs-12 {
 
+            #weather {
+                position: relative;
+                background: lightgray;
+                margin-left: 10px;
+                margin-bottom: 10px;
+                width: 405px;
+                height: 200px;
             }
+
+            #wIconFrame {
+                float: left;
+                position: absolute;
+                vertical-align: bottom;
+                width: 205px;
+                height: 176px;
+                background: grey;
+            }
+
+            #weatherIcon {
+                margin-top: 14px;
+                margin-left: 20px;
+            }
+
+            #wWordFrame {
+                float: left;
+                position: absolute;
+                width: 195px;
+                height: 200px;
+                font-size: 12px;
+                margin-left: 205px;
+            }
+
+            #finance {
+                background: lightgray;
+                margin-left: 10px;
+                width: 405px;
+                height: 400px;
+            }
+            #kospi{
+                margin: 20px;
+            }
+            #kosdaq{
+                margin: 20px;
+            }
+            #toptraded{
+                width: 200px;
+                margin-top: 40px;
+                float: left;
+            }
+            #ttlist {
+                list-style: none;
+                text-align: left;
+                padding: 0px;
+            }
+            .ttrank{
+                font-size: 13px;
+                padding: 5px;
+            }
+            #toppriced{
+                position: absolute;
+                margin-left: 200px;
+                width: 200px;
+                margin-top: 40px;
+                float: left;
+            }
+            .tprank{
+                font-size: 13px;
+                padding: 5px;
+            }
+
+            #shopping {
+                background: lightgray;
+                display: block;
+                margin-top: 10px;
+                margin-bottom: 70px;
+                width: 1060px;
+                height: 400px;
+            }
+
+            .title {
+                padding-left: 10px;
+                padding-top: 5px;
+                font-family: 나눔스퀘어;
+                padding-left: 5px;
+            }
+
+            .col {
+                display: flex;
+                justify-content: center;
+            }
+
         </style>
 
-        <script>
-
-        </script>
     </head>
     <body>
         <div id="wrap">
             <div class="header">
+                <span id="date">1996.04.25</span>
                 Nuevapaper
             </div>
             <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">HEADLINE</div>
+                <div class="col">
+                    <div>
+                        <div id="news">
+                            <div id="hlimgFrame">
+                                <img id="headlineImg"
+                                     width="645px"
+                                     height="375px"
+                                     style="display: block"
+                                >
+                                <div id="headlineTitle">
+                                    <p>headlineContent</p>
+                                </div>
+                            </div>
+                            <ul id="hdlist">
+                                <li>
+                                    <div class="arli">1</div>
+                                </li>
+                                <li>
+                                    <div class="arli">2</div>
+                                </li>
+                                <li>
+                                    <div class="arli">3</div>
+                                </li>
+                                <li>
+                                    <div class="arli">4</div>
+                                </li>
+                                <li>
+                                    <div class="arli">5</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="weather">
+                            <div class="title">날씨</div>
+                            <div id="wIconFrame">
+                                <img id="weatherIcon" width="150px" height="150px"
+                                     style="background-color: cornflowerblue">
+                            </div>
+                            <div id="wWordFrame">
+                                <div>
+                                    <span id="temperature">
+                                        24℃
+                                    </span>
+                                    <span id="wthrComment">
+                                        흐림, 어제보다 1도 낮아요
+                                    </span>
+                                </div>
+                                <div>
+                                    <div id="location">
+                                        한국 어딘가
+                                    </div>
+                                    <div id="dust">
+                                        미세먼지: 보통
+                                    </div>
+                                    <div id="u_dust">
+                                        초미세먼지: 보통
+                                    </div>
+                                    <div id="ozone">
+                                        오존: 보통
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div id="finance">
+                            <div class="title">금융</div>
+                            <div id="kospi">
+                                kospi:
+                            </div>
+                            <div id="kosdaq">
+                                kosdaq:
+                            </div>
+                            <div id="ranking">
+                                <div id="toptraded">
+                                    거래상위
+                                    <ul id="ttlist">
+                                        <li>
+                                            <div class="ttrank">1</div>
+                                        </li>
+                                        <li>
+                                            <div class="ttrank">2</div>
+                                        </li>
+                                        <li>
+                                            <div class="ttrank">3</div>
+                                        </li>
+                                        <li>
+                                            <div class="ttrank">4</div>
+                                        </li>
+                                        <li>
+                                            <div class="ttrank">5</div>
+                                        </li>
+                                        <li>
+                                            <div class="ttrank">6</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="toppriced">
+                                    시가총액
+                                    <ul id="ttlist">
+                                        <li>
+                                            <div class="tprank">1</div>
+                                        </li>
+                                        <li>
+                                            <div class="tprank">2</div>
+                                        </li>
+                                        <li>
+                                            <div class="tprank">3</div>
+                                        </li>
+                                        <li>
+                                            <div class="tprank">4</div>
+                                        </li>
+                                        <li>
+                                            <div class="tprank">5</div>
+                                        </li>
+                                        <li>
+                                            <div class="tprank">6</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2">ARTICLE1</div>
-                    <div class="col-md-2">ARTICLE2</div>
-                    <div class="col-md-2">ARTICLE3</div>
+                <div class="col">
+                    <div id="shopping">
+                        <span class="title">쇼핑</span>
+                    </div>
                 </div>
-            </div>
-            <div id="footer">
-                footer
             </div>
         </div>
-
     </body>
+
+    <script>
+        $(document).ready(function () {
+            bringDate();
+            showNews();
+            showWeather();
+            showFinance();
+            showShopping();
+        });
+
+        function bringDate() {
+            $.ajax({
+                type: 'GET',
+                url: '/date',
+                success: function (response) {
+                    dada = document.getElementById('date')
+                    $('#date').text(response)
+                }
+            })
+        }
+
+        function showNews() {
+            $.ajax({
+                type: 'GET',
+                url: '/headline',
+                success: function (response) {
+                    $("#headlineImg").attr("src", response['헤드라인 이미지']);
+                    $("#headlineTitle").text(response['헤드라인 타이틀'])
+                    aList = document.getElementsByClassName('arli')
+                    crawlAr = response['기사들']
+                    for (i = 0; i < aList.length; i++) {
+                        aList[i].innerText = crawlAr[i]
+                    }
+                }
+            });
+        }
+
+        function showWeather() {
+            $.ajax({
+                type: 'GET',
+                url: '/weather',
+                success: function (response) {
+                    var temp = response['현재 기온'] + '℃'
+                    $("#temperature").text(temp)
+                    $("#wthrComment").text(response['상세 날씨'])
+                    $("#location").text(response['위치'])
+                    $("#dust").text(response['미세먼지'])
+                    $("#u_dust").text(response['초미세먼지'])
+                    $("#ozone").text(response['오존'])
+                }
+            })
+        }
+
+        function showFinance() {
+            $.ajax({
+                type: 'GET',
+                url: '/finance',
+                success: function (response) {
+                    var kospi = 'KOSPI: ' + response['코스피']
+                    var kosdaq = 'KOSDAQ: ' + response['코스닥']
+                    $("#kospi").text(kospi)
+                    $("#kosdaq").text(kosdaq)
+                    trList = document.getElementsByClassName('ttrank')
+                    crawlTr = response['거래상위']
+                    for (i = 0; i < 6; i++) {
+                        trList[i].innerText = crawlTr[i]
+                    }
+                    tpList = document.getElementsByClassName('tprank')
+                    crawlTp = response['시가총액']
+                    for (i = 0; i < 6; i++) {
+                        tpList[i].innerText = crawlTp[i]
+                    }
+                }
+            })
+        }
+    </script>
+
 </html>

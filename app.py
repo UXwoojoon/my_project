@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, jsonify
 
@@ -12,6 +13,13 @@ def home():
 
 
 # API 역할을 하는 부분
+
+#날짜불러오기
+@app.route('/date', methods=['GET'])
+def bringDate():
+    datetoday = datetime.today()
+    DT = datetoday.strftime("20%y.%m.%d")
+    return DT
 
 # 뉴스, 날씨, 쇼핑, 경제 웹크롤링 api
 # 뉴스
@@ -77,8 +85,8 @@ def finance():
     html = requests.get('https://finance.naver.com/')
     soup = BeautifulSoup(html.text, 'html.parser')
 
-    #kospi = soup.select_one('div[class=section_stock] > div:nth-child(1) > div > ').text
-    #kosdaq = soup.select_one('div[class=section_stock] > div:nth-child(2) > a > span > span[class=num]').text
+    kosdaq = soup.select_one('div[class=section_stock] > div.kosdaq_area > div.heading_area > a > span > span.num').text
+    kospi = soup.select_one('div[class=section_stock] > div.kospi_area > div.heading_area > a > span > span.num').text
 
     top_traded = soup.select('tbody[id=_topItems1] > tr')
     top_price = soup.select('tbody[id=_topItems4] > tr')
@@ -89,7 +97,7 @@ def finance():
     for table in top_price:
         topprice_array.append(table.select_one('th > a').text)
 
-    return jsonify({'거래상위': toptraded_array, '시가총액': topprice_array})
+    return jsonify({'코스피': kospi, '코스닥': kosdaq, '거래상위': toptraded_array, '시가총액': topprice_array})
 
 
 
